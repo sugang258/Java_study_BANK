@@ -35,20 +35,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "join", method=RequestMethod.POST)
-	public String join(HttpServletRequest request) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO) throws Exception {
 		System.out.println("회원가입 POST 실행");
-		String username = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
 		
+		/*
 		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		bankMembersDTO.setUserName(username);
 		bankMembersDTO.setPassword(pw);
 		bankMembersDTO.setName(name);
 		bankMembersDTO.setEmail(email);
 		bankMembersDTO.setPhone(phone);
+		*/
 		
 		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 
