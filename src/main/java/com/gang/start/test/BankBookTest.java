@@ -21,11 +21,11 @@ public class BankBookTest {
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		BankBookView bankBookView = new BankBookView();
-		/*
+		
 		bankBookDTO.setBooknum(num);
-		bankBookDTO.setBookname("GANG");
-		bankBookDTO.setBookrate(5.67);
-		bankBookDTO.setBooksale(1);
+		bankBookDTO.setBookname("SSUSU");
+		bankBookDTO.setBookrate(3.88);
+		bankBookDTO.setBooksale(true);
 		
 		int result = bankBookDAO.setBankBook(bankBookDTO);
 		
@@ -34,18 +34,19 @@ public class BankBookTest {
 		}else {
 			System.out.println("실패");
 		}
-		*/
+		
 		
 		/*
 		ArrayList<BankBookDTO> ar = bankBookDAO.getList();
 		
 		bankBookView.view(ar);
 		*/
-		
+		/*
 		bankBookDTO.setBooknum(1659509410859L);
 		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
 		bankBookDAO.setChangeSale(bankBookDTO);
 		bankBookView.view(bankBookDTO);
+		*/
 		
 		/*
 		bankBookDTO.setBooknum(1659509410859L);

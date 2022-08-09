@@ -1,6 +1,7 @@
 package com.gang.start.bankbook;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,9 +29,8 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value = "detail", method=RequestMethod.GET)
-	public String detail(HttpServletRequest request) throws Exception {
+	public String detail(String bookNum, HttpServletRequest request) throws Exception {
 		
-		String bookNum = request.getParameter("bookNum");
 		System.out.println(bookNum);
 		
 		BankBookDTO bankbookDTO = new BankBookDTO();
@@ -40,9 +40,37 @@ public class BankBookController {
 		BankBookDAO bankbookDAO = new BankBookDAO();
 		
 		bankbookDTO = bankbookDAO.getDetail(bankbookDTO);
+		
 		request.setAttribute("dto", bankbookDTO);
 		
 		return "/bankbook/detail";
+		
+	}
+	@RequestMapping(value ="add", method=RequestMethod.GET)
+	public String add() {
+		System.out.println("상품 등록 실행 GET");
+		
+		return "/bankbook/add";
+		
+	}
+	
+	@RequestMapping(value ="add", method=RequestMethod.POST)
+	public String add(BankBookDTO bankBookDTO) throws Exception {
+		
+		System.out.println("상품 등록 실행 POST");
+		
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		Calendar ca = Calendar.getInstance();
+		long num = ca.getTimeInMillis();
+		
+		bankBookDTO.setBooknum(num);
+		bankBookDTO.setBooksale(true);
+
+		
+		int result = bankBookDAO.setBankBook(bankBookDTO);
+		System.out.println(result);
+		
+		return "/bankbook/add";
 		
 	}
 

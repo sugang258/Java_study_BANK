@@ -13,6 +13,8 @@
 
 <a href="./member/login">Login</a>
 <a href="./member/join">Join</a>
-<a href ="./bankbook/list">list</a>
+<a href="./bankbook/list">List</a>
+<a href ="./bankbook/detail?booknum=1">Detail</a>
+<a href ="./bankbook/add">상품등록</a>
 </body>
 </html>
