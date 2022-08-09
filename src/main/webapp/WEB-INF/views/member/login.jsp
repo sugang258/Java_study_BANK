@@ -23,6 +23,5 @@
         <input type="submit" value="로그인" onclick="alert('로그인되었을까요?')">
         <input type="button" name="join" value="회원가입" onclick="location.href='join'"/>
     </form>
-
 </body>
 </html>

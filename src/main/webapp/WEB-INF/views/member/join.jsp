@@ -13,7 +13,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
-	<form action="join" class="align-center">
+	<form action="join" class="align-center" method="post">
 	<h1>join page</h1>
         ID
         <input type="text" name="id" placeholder="id를 입력하세요"><br><br>

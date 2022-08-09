@@ -1,4 +1,4 @@
-package com.gang.bankbook;
+package com.gang.start.bankbook;
 
 public class BankBookDTO {
 	
