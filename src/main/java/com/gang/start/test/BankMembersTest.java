@@ -2,9 +2,9 @@ package com.gang.start.test;
 
 import java.util.ArrayList;
 
-import com.gang.members.BankMembersDAO;
-import com.gang.members.BankMembersDTO;
-import com.gang.members.BankMembersView;
+import com.gang.start.members.BankMembersDAO;
+import com.gang.start.members.BankMembersDTO;
+import com.gang.start.members.BankMembersView;
 
 public class BankMembersTest {
 

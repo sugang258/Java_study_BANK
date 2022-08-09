@@ -1,4 +1,4 @@
-package com.gang.members;
+package com.gang.start.members;
 
 public class BankMembersDTO {
 	

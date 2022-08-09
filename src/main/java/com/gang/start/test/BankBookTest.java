@@ -6,7 +6,7 @@ import java.util.Calendar;
 import com.gang.bankbook.BankBookDAO;
 import com.gang.bankbook.BankBookDTO;
 import com.gang.bankbook.BankBookView;
-import com.gang.members.BankMembersDTO;
+import com.gang.start.members.BankMembersDTO;
 
 public class BankBookTest {
 

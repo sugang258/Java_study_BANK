@@ -2,7 +2,7 @@ package com.gang.bankbook;
 
 import java.util.ArrayList;
 
-import com.gang.members.BankMembersDTO;
+import com.gang.start.members.BankMembersDTO;
 
 public class BankBookView {
 public void view(ArrayList<BankBookDTO> ar) {
