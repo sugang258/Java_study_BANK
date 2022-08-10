@@ -19,6 +19,7 @@
         <input type="text" name="bookrate" placeholder="bookrate"><br><br>
        
         <input type="submit" value="상품등록" >
+        <!-- <button type="submit">Add</button> -->
       
 	
 	

@@ -18,24 +18,24 @@ import com.gang.start.bankbook.BankBookDTO;
 public class BankBookController {
 	
 	@RequestMapping(value ="list", method=RequestMethod.GET)
-	public String list(HttpServletRequest request) throws Exception {
+	public void list(HttpServletRequest request) throws Exception {
 		BankBookDAO bankbookDAO = new BankBookDAO();
 
 		ArrayList<BankBookDTO> ar = bankbookDAO.getList();
 		request.setAttribute("list", ar);
 		
 		System.out.println();
-		return "/bankbook/list";
+		
 	}
 	
 	@RequestMapping(value = "detail", method=RequestMethod.GET)
-	public String detail(String bookNum, HttpServletRequest request) throws Exception {
+	public void detail(Long bookNum, HttpServletRequest request) throws Exception {
 		
 		System.out.println(bookNum);
 		
 		BankBookDTO bankbookDTO = new BankBookDTO();
-		Long l = Long.parseLong(bookNum);
-		bankbookDTO.setBooknum(l);
+		//Long l = Long.parseLong(bookNum);
+		bankbookDTO.setBooknum(1);
 		
 		BankBookDAO bankbookDAO = new BankBookDAO();
 		
@@ -43,14 +43,17 @@ public class BankBookController {
 		
 		request.setAttribute("dto", bankbookDTO);
 		
-		return "/bankbook/detail";
+		//return "/bankbook/detail";
 		
 	}
+	
+	// /bankbook/add GET /WEB-INF/views/bankbook/add.jsp
 	@RequestMapping(value ="add", method=RequestMethod.GET)
-	public String add() {
+	public void add() throws Exception {
 		System.out.println("상품 등록 실행 GET");
 		
-		return "/bankbook/add";
+		//return "/bankbook/add";
+		
 		
 	}
 	
@@ -60,6 +63,7 @@ public class BankBookController {
 		System.out.println("상품 등록 실행 POST");
 		
 		BankBookDAO bankBookDAO = new BankBookDAO();
+		
 		Calendar ca = Calendar.getInstance();
 		long num = ca.getTimeInMillis();
 		
