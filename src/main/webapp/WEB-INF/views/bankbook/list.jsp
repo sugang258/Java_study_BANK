@@ -17,7 +17,7 @@
 	<!-- /bankbook/detail jsp:detail.jsp  -->
 	<!-- link 주소는 상대경로 작성 -->
 	<table border = "1">
-		</thead>
+		<thead>
 		<tr>
 			<th> name </th> <th> rate </th>
 			
@@ -49,6 +49,8 @@
 			
 	
 	</table>
+	<a href="./add">상품등록</a>
+	
 	
 
 </body>

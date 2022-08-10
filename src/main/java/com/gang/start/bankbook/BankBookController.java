@@ -6,9 +6,11 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gang.start.bankbook.BankBookDAO;
 import com.gang.start.bankbook.BankBookDTO;
@@ -18,32 +20,43 @@ import com.gang.start.bankbook.BankBookDTO;
 public class BankBookController {
 	
 	@RequestMapping(value ="list", method=RequestMethod.GET)
-	public void list(HttpServletRequest request) throws Exception {
-		BankBookDAO bankbookDAO = new BankBookDAO();
-
-		ArrayList<BankBookDTO> ar = bankbookDAO.getList();
-		request.setAttribute("list", ar);
+	public String list(Model model) throws Exception {
 		
-		System.out.println();
+		//ModelAndView mv = new ModelAndView();
+		BankBookDAO bankbookDAO = new BankBookDAO();
+		ArrayList<BankBookDTO> ar = bankbookDAO.getList();
+		
+		model.addAttribute("list", ar);
+		
+		//request.setAttribute("list", ar);
+				
+		return "bankbook/list";
 		
 	}
 	
 	@RequestMapping(value = "detail", method=RequestMethod.GET)
-	public void detail(Long bookNum, HttpServletRequest request) throws Exception {
+	public ModelAndView detail(BankBookDTO bankbookDTO, HttpServletRequest request) throws Exception {
 		
-		System.out.println(bookNum);
+		ModelAndView mv = new ModelAndView();
 		
-		BankBookDTO bankbookDTO = new BankBookDTO();
-		//Long l = Long.parseLong(bookNum);
-		bankbookDTO.setBooknum(1);
+		String bookNum = request.getParameter("bookNum");
+		Long l = Long.parseLong(bookNum);
+	
+		
+		//System.out.println(bookNum);
+		//BankBookDTO bankbookDTO = new BankBookDTO();
 		
 		BankBookDAO bankbookDAO = new BankBookDAO();
 		
+		bankbookDTO.setBooknum(l);
 		bankbookDTO = bankbookDAO.getDetail(bankbookDTO);
 		
-		request.setAttribute("dto", bankbookDTO);
+		//request.setAttribute("dto", bankbookDTO);
 		
+		mv.setViewName("bankbook/detail");
+		mv.addObject("dto", bankbookDTO);
 		//return "/bankbook/detail";
+		return mv;
 		
 	}
 	
@@ -58,8 +71,9 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value ="add", method=RequestMethod.POST)
-	public String add(BankBookDTO bankBookDTO) throws Exception {
+	public ModelAndView add(BankBookDTO bankBookDTO) throws Exception {
 		
+		ModelAndView mv = new ModelAndView();
 		System.out.println("상품 등록 실행 POST");
 		
 		BankBookDAO bankBookDAO = new BankBookDAO();
@@ -70,11 +84,12 @@ public class BankBookController {
 		bankBookDTO.setBooknum(num);
 		bankBookDTO.setBooksale(true);
 
+		bankBookDAO.setBankBook(bankBookDTO);
+		//System.out.println(result);
+		mv.setViewName("redirect:./list");
+		//mv.addObject("list",bankBookDTO);
 		
-		int result = bankBookDAO.setBankBook(bankBookDTO);
-		System.out.println(result);
-		
-		return "/bankbook/add";
+		return mv;
 		
 	}
 

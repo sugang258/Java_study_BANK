@@ -20,7 +20,7 @@
         PW를 입력하세요<br>
         <input type="text" name="pw" placeholder="pw를 입력하세요"><br>
 
-        <input type="submit" value="로그인" onclick="alert('로그인되었을까요?')">
+        <input type="submit" value="로그인" onclick="location.href='home'"/>
         <input type="button" name="join" value="회원가입" onclick="location.href='join'"/>
     </form>
 </body>
