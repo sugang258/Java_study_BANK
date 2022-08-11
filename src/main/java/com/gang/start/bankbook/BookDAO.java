@@ -19,4 +19,10 @@ public interface BookDAO {
 	//BookNum의 값으로 조회
 	public BankBookDTO getDetail(BankBookDTO bankBookDTO) throws Exception;
 	
+	//BankBook 업데이트
+	public int setUpdate(BankBookDTO bankBookDTO) throws Exception;
+	
+	//BankBook 삭제
+	public int setDelete(BankBookDTO bankBookDTO) throws Exception;
+	
 }

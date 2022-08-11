@@ -1,7 +1,13 @@
 <%@page import="com.gang.start.bankbook.BankBookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% BankBookDTO bankbookDTO = (BankBookDTO) request.getAttribute("dto"); %>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- 
+    <%
+	//요청이 발생하면 생성, 응답이 나가면 소멸 : RequestScope 
+    BankBookDTO bankbookDTO = (BankBookDTO) request.getAttribute("dto"); 
+    %>
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +16,7 @@
 </head>
 <body>
 	<h1>BankBook Detail</h1>
-	<% if (bankbookDTO != null) { %>
+	<%-- <% if (bankbookDTO != null) { %> --%>
 	
 	<table border = "4">
 	
@@ -21,29 +27,36 @@
 		<th>sale</th>
 		
 		</tr>
+		
 		<tr>
-		<td><%= bankbookDTO.getBooknum() %> </td>
+		<td>${requestScope.dto.booknum}</td>
+		<td>${requestScope.dto.bookname}</td>
+		<td>${dto.bookrate}</td>
+		<td>${dto.booksale}</td>
+		<%-- <td><%= bankbookDTO.getBooknum() %> </td>
 		<td><%= bankbookDTO.getBookname() %> </td>
-		<td><%= bankbookDTO.getBookrate() %> </td>
-		<td><% if (bankbookDTO.isBookSale() == true) { %>
+		<td><%= bankbookDTO.getBookrate() %> </td> --%>
+		<%-- <td><% if (${dto.bookrate} == true) { %>
 		판매중
 		<% } else { %>
 		판매금지
 		<% } %>
 		
-		</td>
+		</td> --%>
 		
 		</tr>
 	</table>
-	<% }else { %>
+	<%-- <% }else { %>
 	<h3>data가 없다</h3>
-	<% } %>
+	<% } %> --%>
 	<a href="./list">리스트보기</a>
 	<input type="button" value="뒤로가기" onClick="location.href='list'">
 	<!-- 상대경로 -->
 	<a href = "../member/login" >Login</a>
 	<!-- 절대경로 -->
 	<a href ="../member/join">Join</a>
+	<a href ="./update?booknum=${dto.booknum}">Update</a>
+	<a href ="./delete?booknum=${dto.booknum }">Delete</a>
 
 </body>
 </html>
