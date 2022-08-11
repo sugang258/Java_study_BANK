@@ -33,17 +33,32 @@ public class MemberController {
 	
 	// /member/login
 		@RequestMapping(value = "login", method= RequestMethod.POST)
-		public String login(BankMembersDTO bankMembersDTO) {
+		public String login(BankMembersDTO bankMembersDTO, Model model) throws Exception {
 			System.out.println("DB에 로그인 실행");
 			//"redirect:다시접속할URL주소(절대경로, 상대경로)"
-			return "redirect:../";
+			
+			BankMembersDAO bankMembersDAO = new BankMembersDAO();
+			
+			bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+			model.addAttribute("member",bankMembersDTO);
+			
+			
+			 if(bankMembersDTO != null) {
+				System.out.println("로그인 성공");
+			}else {
+				System.out.println("로그인 실패");
+			}
+			
+			//System.out.println(bankMembersDTO);
+			
+			return "./home";
 		}
 		
 	
 
 	// /member/join  Get
 	@RequestMapping(value = "join",method= RequestMethod.GET)
-	public void join() {
+	public void join() throws Exception {
 		System.out.println("회원가입 GET 실행");
 		
 		//return "member/join";
