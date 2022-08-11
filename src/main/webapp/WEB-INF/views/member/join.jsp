@@ -14,7 +14,8 @@
 </style>
 <body>
 	<form action="join" class="align-center" method="post">
-	<h1>join page</h1>
+	<h1>join page</h1><br>
+	
         ID
         <input type="text" name="userName" placeholder="id를 입력하세요"><br><br>
         PW

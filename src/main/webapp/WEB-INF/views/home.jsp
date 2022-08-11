@@ -12,7 +12,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-
+<p><img src ="resources/image/chunsik.png" height="200"> </p>
 <a href="./member/login">Login</a>
 <a href="./member/join">Join</a>
 <a href="./member/search">Search</a>
