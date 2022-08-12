@@ -13,7 +13,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
-	<form action="join" class="align-center" method="post">
+	<form action="join.gang" class="align-center" method="post">
 	<h1>join page</h1><br>
 	
         ID

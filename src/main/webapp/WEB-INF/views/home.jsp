@@ -14,20 +14,21 @@
 <P>  The time on the server is ${serverTime}. </P>
 <p><img src ="resources/image/chunsik.png" height="200"> </p>
 
-<c:if test="${empty member}" >
-<a href="./member/login">Login</a>
-<a href="./member/join">Join</a>
+<c:if test="${empty sessionScope.member}" >
+<a href="./member/login.gang">Login</a>
+<a href="./member/join.gang">Join</a>
 </c:if>
 
-<c:if test="${not empty member}">
-<a href="#">Logout</a>
+<c:if test="${not empty sessionScope.member}">
+<h3>${sessionScope.member.userName}님 환영합니다.</h3>
+<a href="./member/logout.gang">Logout</a>
 <a href="#">MyPage</a>
 </c:if>
 
 
-<a href="./member/search">Search</a>
-<a href="./bankbook/list">List</a>
-<a href ="./bankbook/detail">Detail</a>
-<a href ="./bankbook/add">BankBook 상품등록</a>
+<a href="./member/search.gang">Search</a>
+<a href="./bankbook/list.gang">List</a>
+<a href ="./bankbook/detail.gang">Detail</a>
+<a href ="./bankbook/add.gang">BankBook 상품등록</a>
 </body>
 </html>

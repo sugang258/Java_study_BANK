@@ -12,7 +12,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
-	<form action="update" class="align-center" method="post" >
+	<form action="update.gang" class="align-center" method="post" >
 		<div>
 		<h1>Update Page</h1>
 		</div>

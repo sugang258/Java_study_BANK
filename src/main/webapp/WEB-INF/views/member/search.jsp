@@ -10,7 +10,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
-	<form action="./search" class="align-center" method="post">
+	<form action="search.gang" class="align-center" method="post">
 	<br>
 	ID입력<input type="text" name="userName" placeholder="id를 입력하세요"><br><br>
 	<input type="submit" value="search">

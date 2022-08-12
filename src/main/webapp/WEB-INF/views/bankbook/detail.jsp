@@ -49,14 +49,16 @@
 	<%-- <% }else { %>
 	<h3>data가 없다</h3>
 	<% } %> --%>
-	<a href="./list">리스트보기</a>
+	<a href="./list.gang">리스트보기</a>
 	<input type="button" value="뒤로가기" onClick="location.href='list'">
 	<!-- 상대경로 -->
-	<a href = "../member/login" >Login</a>
+	<a href = "../member/login.gang" >Login</a>
 	<!-- 절대경로 -->
-	<a href ="../member/join">Join</a>
-	<a href ="./update?booknum=${dto.booknum}">Update</a>
-	<a href ="./delete?booknum=${dto.booknum }">Delete</a>
-
+	<a href ="../member/join.gang">Join</a>
+	<a href ="./update.gang?booknum=${dto.booknum}">Update</a>
+	<a href ="./delete.gang?booknum=${dto.booknum }">Delete</a>
+	<c:if test="${not empty sessionScope.member}">
+	<a href ="#">가입하기</a>
+	</c:if>
 </body>
 </html>

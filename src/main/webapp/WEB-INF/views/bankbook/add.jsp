@@ -10,7 +10,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
-	<form action="add" class=".align-center" method="post">
+	<form action="add.gang" class=".align-center" method="post">
 	<h1>Product Page</h1>
 	 	
         bookname
