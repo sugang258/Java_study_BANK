@@ -58,7 +58,7 @@
 	<a href ="./update.gang?booknum=${dto.booknum}">Update</a>
 	<a href ="./delete.gang?booknum=${dto.booknum }">Delete</a>
 	<c:if test="${not empty sessionScope.member}">
-	<a href ="#">가입하기</a>
+	<a href ="../bankaccount/add.gang?bookNum=${dto.booknum }">가입하기</a>
 	</c:if>
 </body>
 </html>
