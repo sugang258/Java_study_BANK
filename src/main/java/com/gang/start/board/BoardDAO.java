@@ -77,13 +77,14 @@ public class BoardDAO {
 		
 		Connection con = DBConnector.getConnection();
 		
-		String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+		String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE,?)";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1,boardDTO.getTitle());
 		st.setString(2, boardDTO.getContexts());
 		st.setString(3, boardDTO.getUserName());
+		st.setInt(4, boardDTO.getViews());
 		
 		int result = st.executeUpdate();
 		

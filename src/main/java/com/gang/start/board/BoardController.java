@@ -91,15 +91,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "add.gang", method=RequestMethod.POST)
-	public ModelAndView add(BoardDTO boardDTO) throws Exception {
+	public ModelAndView add(BoardDTO boardDTO, BankMembersDTO bankMembersDTO) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
 		System.out.println("글 작성 실행 post");
 		
 		BoardDAO boardDAO = new BoardDAO();
-		BankMembersDTO bankMembersDTO = new BankMembersDTO();
+		//BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
-		boardDTO.setUserName("id1");
+		boardDTO.setUserName(bankMembersDTO.getUserName());
+		boardDTO.setViews(0);
 		
 		boardDAO.add(boardDTO);
 		mv.setViewName("redirect:./list.gang");
