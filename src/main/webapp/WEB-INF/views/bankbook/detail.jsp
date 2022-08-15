@@ -50,7 +50,7 @@
 	<h3>data가 없다</h3>
 	<% } %> --%>
 	<a href="./list.gang">리스트보기</a>
-	<input type="button" value="뒤로가기" onClick="location.href='list'">
+	<input type="button" value="뒤로가기" onClick="location.href='list.gang'">
 	<!-- 상대경로 -->
 	<a href = "../member/login.gang" >Login</a>
 	<!-- 절대경로 -->

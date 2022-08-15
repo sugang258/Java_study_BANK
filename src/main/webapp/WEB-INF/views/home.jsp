@@ -30,5 +30,6 @@
 <a href="./bankbook/list.gang">List</a>
 <a href ="./bankbook/detail.gang">Detail</a>
 <a href ="./bankbook/add.gang">BankBook 상품등록</a>
+<a href ="./board/list.gang">게시판 목록 보기</a>
 </body>
 </html>
