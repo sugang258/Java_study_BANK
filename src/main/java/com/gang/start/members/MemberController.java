@@ -2,24 +2,40 @@ package com.gang.start.members;
 
 import java.util.ArrayList;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gang.start.members.BankMembersDAO;
-import com.gang.start.members.BankMembersDTO;
-
+import com.gang.start.di.BankMembersService;
 
 @Controller 
 @RequestMapping(value = "/member/*")
 //이 클래스는 Controller 역할, 
 //Container에게 이 클래스의 객체를 생성 위임(New ~~~)
 public class MemberController {
+	
+	@Autowired
+	private BankMembersService bankMembersService;
+	
+	/*
+	@Autowired
+	@Qualifier("myDAO")
+	private BankMembersDAO bankMembersDAO;
+	*/
+	/*
+	@Autowired
+	public MemberController(BankMembersDAO bankMembersDAO) {
+		this.bankMembersDAO = bankMembersDAO;
+	}
+	*/
 	
 	//annotation
 	//@ : 설명 + 실행
@@ -34,17 +50,18 @@ public class MemberController {
 	
 	// /member/login
 		@RequestMapping(value = "login.gang", method= RequestMethod.POST)
-		public String login(HttpSession session, BankMembersDTO bankMembersDTO, Model model) throws Exception {
+		public String login(HttpSession session, BankMembersDTO bankMembersDTO, Model model, HttpServletRequest request) throws Exception {
 			System.out.println("DB에 로그인 실행");
 			//"redirect:다시접속할URL주소(절대경로, 상대경로)"
+			String userName = request.getParameter("userName");
 			
-			BankMembersDAO bankMembersDAO = new BankMembersDAO();
-			
-			bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+			bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 			model.addAttribute("member",bankMembersDTO);
 			
 			//HttpSession session = request.getSession();
 			session.setAttribute("member", bankMembersDTO);
+			HttpSession se = request.getSession();
+			se.setAttribute("user", userName);
 			
 			
 			 if(bankMembersDTO != null) {
@@ -81,9 +98,8 @@ public class MemberController {
 		bankMembersDTO.setPhone(phone);
 		*/
 		
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 
-		int result = bankMembersDAO.setJoin(bankMembersDTO);
+		int result = bankMembersService.setJoin(bankMembersDTO);
 		
 		System.out.println(result);
 		return "redirect:./login.gang";
@@ -102,10 +118,8 @@ public class MemberController {
 	
 	@RequestMapping(value="search.gang",method=RequestMethod.POST)
 	public String getSearchByID(String userName, Model model) throws Exception {
-		
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
-	
-		ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID(userName);
+			
+		ArrayList<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
 		
 		model.addAttribute("list", ar);
 		

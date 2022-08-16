@@ -2,6 +2,9 @@ package com.gang.start.board;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,19 +94,22 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "add.gang", method=RequestMethod.POST)
-	public ModelAndView add(BoardDTO boardDTO, BankMembersDTO bankMembersDTO) throws Exception {
+	public ModelAndView add(BoardDTO boardDTO, BankMembersDTO bankMembersDTO, HttpServletRequest request) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
 		System.out.println("글 작성 실행 post");
 		
 		BoardDAO boardDAO = new BoardDAO();
 		//BankMembersDTO bankMembersDTO = new BankMembersDTO();
-		
-		boardDTO.setUserName(bankMembersDTO.getUserName());
+		HttpSession se = request.getSession();
+		//boardDTO.setUserName(bankMembersDTO.getUserName());
+		String user = (String) se.getAttribute("user");
+		boardDTO.setUserName(user);
 		boardDTO.setViews(0);
 		
 		boardDAO.add(boardDTO);
 		mv.setViewName("redirect:./list.gang");
+		
 		
 		return mv;
 	}

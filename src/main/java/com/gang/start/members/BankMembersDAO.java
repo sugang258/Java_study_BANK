@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.gang.start.util.DBConnector;
 
+@Repository
 public class BankMembersDAO implements MembersDAO {
 	
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
