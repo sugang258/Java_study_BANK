@@ -1,6 +1,7 @@
 package com.gang.start.members;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -104,7 +105,7 @@ public class MemberController {
 	@RequestMapping(value="search.gang",method=RequestMethod.POST)
 	public String getSearchByID(String userName, Model model) throws Exception {
 	
-		ArrayList<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
+		List<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
 		
 		model.addAttribute("list", ar);
 		

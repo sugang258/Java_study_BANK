@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.gang.start.members.BankMembersDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

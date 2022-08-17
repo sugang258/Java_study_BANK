@@ -32,9 +32,9 @@ public class BankMembersTest {
 		}
 		*/
 		
-		ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID("ID");
+		//rrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID("ID");
 		
-		bankMembersView.view(ar);
+		//bankMembersView.view(ar);
 		
 		
 		
