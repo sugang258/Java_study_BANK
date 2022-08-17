@@ -1,10 +1,12 @@
 package com.gang.start.members;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,9 @@ public class MemberController {
 	//annotation
 	//@ : 설명 + 실행
 	
+	@Autowired
+	private BankMembersService bankMembersService;
+	
 	// /member/login
 	@RequestMapping(value = "login.gang", method= RequestMethod.GET)
 	public String login() {
@@ -38,9 +43,8 @@ public class MemberController {
 			System.out.println("DB에 로그인 실행");
 			//"redirect:다시접속할URL주소(절대경로, 상대경로)"
 			
-			BankMembersDAO bankMembersDAO = new BankMembersDAO();
 			
-			bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+			bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 			model.addAttribute("member",bankMembersDTO);
 			
 			//HttpSession session = request.getSession();
@@ -81,9 +85,8 @@ public class MemberController {
 		bankMembersDTO.setPhone(phone);
 		*/
 		
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 
-		int result = bankMembersDAO.setJoin(bankMembersDTO);
+		int result = bankMembersService.setJoin(bankMembersDTO);
 		
 		System.out.println(result);
 		return "redirect:./login.gang";
@@ -103,9 +106,8 @@ public class MemberController {
 	@RequestMapping(value="search.gang",method=RequestMethod.POST)
 	public String getSearchByID(String userName, Model model) throws Exception {
 		
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 	
-		ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID(userName);
+		List<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
 		
 		model.addAttribute("list", ar);
 		

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+         
+         <mapper namespace="com.gang.start.bankbook.BankBookDAO">
+         	<!--bankbook 등록 -->
+         	<insert id="setBankBook" parameterType="com.gang.start.bankbook.BankBookDTO">
+         		INSERT INTO BANKBOOK VALUES (#{booknum},#{bookname},#{bookrate},#{booksale})
+         	</insert>
+         	
+         	<!-- bankbook list -->
+         	<select id="getList" resultType="com.gang.start.bankbook.BankBookDTO">
+         		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
+         	</select>
+         	
+         	<!-- sale의 값을 바꿈 -->
+         	<update id="setChangeSale" parameterType="com.gang.start.bankbook.BankBookDTO" >
+         		UPDATE BANKBOOK SET BOOKSALE = #{booksale} WHERE BOOKNUM = #{booknum}
+         	</update>
+         	
+         	<!-- BookNum의 값으로 조회 -->
+         	<select id="getDetail" parameterType="com.gang.start.bankbook.BankBookDTO" resultType="com.gang.start.bankbook.BankBookDTO">
+         		SELECT * FROM BANKBOOK WHERE BOOKNUM = #{booknum}
+         	</select>
+         	
+         	<!-- BankBook 업데이트 -->
+         	<update id="setUpdate" parameterType="com.gang.start.bankbook.BankBookDTO">
+         		UPDATE BANKBOOK SET BOOKNAME = #{bookname}, BOOKRATE = #{bookrate} WHERE BOOKNUM = #{booknum}
+         	</update>
+         	
+         	<!-- BankBook 삭제 -->
+         	<delete id="setDelete" parameterType="com.gang.start.bankbook.BankBookDTO">
+         		DELETE FROM BANKBOOK WHERE BOOKNUM = #{booknum}
+         	</delete>
+        
+         </mapper>

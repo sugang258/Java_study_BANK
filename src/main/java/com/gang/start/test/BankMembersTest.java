@@ -1,6 +1,7 @@
 package com.gang.start.test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.gang.start.members.BankMembersDAO;
 import com.gang.start.members.BankMembersDTO;
@@ -32,9 +33,9 @@ public class BankMembersTest {
 		}
 		*/
 		
-		ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID("ID");
+		List<BankMembersDTO> ar = bankMembersDAO.getSearchByID("ID");
 		
-		bankMembersView.view(ar);
+		//bankMembersView.view(ar);
 		
 		
 		
