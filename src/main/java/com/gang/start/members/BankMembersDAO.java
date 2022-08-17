@@ -5,9 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.gang.start.util.DBConnector;
 
+@Repository
 public class BankMembersDAO implements MembersDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	private final String NAMESPACE="com.gang.start.members.BankMembersDAO.";
 	
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -68,30 +77,30 @@ public class BankMembersDAO implements MembersDAO {
 	
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception{
 		
-		Connection con = DBConnector.getConnection();
+		//Connection con = DBConnector.getConnection();
 		
-		String sql = "SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME = ? AND PASSWORD = ?";
+		//String sql = "SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME = ? AND PASSWORD = ?";
 		
-		PreparedStatement st = con.prepareStatement(sql);
+		//PreparedStatement st = con.prepareStatement(sql);
 
-		st.setString(1, bankMembersDTO.getUserName());
-		st.setString(2, bankMembersDTO.getPassword());
+		//st.setString(1, bankMembersDTO.getUserName());
+		//st.setString(2, bankMembersDTO.getPassword());
 		
-		ResultSet rs = st.executeQuery();
+		//ResultSet rs = st.executeQuery();
 		
-		if(rs.next()) {
-			bankMembersDTO = new BankMembersDTO();
-			bankMembersDTO.setUserName(rs.getString("USERNAME"));
-			bankMembersDTO.setPassword(rs.getString("PASSWORD"));
-		}else {
-			bankMembersDTO = null;
-		}
-		
-		
-		DBConnector.disConnect(rs, st, con);
+		//if(rs.next()) {
+		//	bankMembersDTO = new BankMembersDTO();
+		//	bankMembersDTO.setUserName(rs.getString("USERNAME"));
+		//	bankMembersDTO.setPassword(rs.getString("PASSWORD"));
+		//}else {
+		//	bankMembersDTO = null;
+		//}
 		
 		
-		return bankMembersDTO;
+		//DBConnector.disConnect(rs, st, con);
+		
+		
+		return sqlSession.selectOne(NAMESPACE+"getLogin", bankMembersDTO);
 		
 	}
 

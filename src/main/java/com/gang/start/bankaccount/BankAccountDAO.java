@@ -3,8 +3,11 @@ package com.gang.start.bankaccount;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import org.springframework.stereotype.Repository;
+
 import com.gang.start.util.DBConnector;
 
+@Repository
 public class BankAccountDAO {
 	
 	public int add(BankAccountDTO bankAccountDTO) throws Exception {
