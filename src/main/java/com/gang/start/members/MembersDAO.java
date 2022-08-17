@@ -11,6 +11,5 @@ public interface MembersDAO {
 	//검색어를 입력해서 id를 찾기
 	public List<BankMembersDTO> getSearchByID(String search) throws Exception;
 		
-	
 
 }

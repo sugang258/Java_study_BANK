@@ -106,7 +106,8 @@ public class MemberController {
 	public String getSearchByID(String userName, Model model) throws Exception {
 	
 		List<BankMembersDTO> ar = bankMembersService.getSearchByID(userName);
-		
+		System.out.println(ar);
+		System.out.println(ar.size());
 		model.addAttribute("list", ar);
 		
 		return "member/list";
